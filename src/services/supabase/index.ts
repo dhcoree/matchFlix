@@ -1,9 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://placeholder.supabase.co'
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'placeholder-key'
+const rawUrl = import.meta.env.VITE_SUPABASE_URL
+const rawKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-const isDemoMode = !import.meta.env.VITE_SUPABASE_URL
+const isDemoMode =
+  !rawUrl || !rawKey || rawUrl.startsWith('your_') || rawKey.startsWith('your_')
+
+const supabaseUrl = isDemoMode ? 'https://placeholder.supabase.co' : rawUrl
+const supabaseAnonKey = isDemoMode ? 'placeholder-key' : rawKey
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
