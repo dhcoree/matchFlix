@@ -41,3 +41,13 @@ export default function App() {
     </Routes>
   )
 }
+
+
+/* TODO: 
+
+- criar conta vercel, 
+- criar conta no supabase,
+-  resend, 
+- comprar dominio,
+
+*/
